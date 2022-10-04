@@ -1,18 +1,16 @@
-create table Cars(
-	id SERIAL PRIMARY KEY,
-	carName varchar(20),
-	carAvailable BOOLEAN,
-	lastOrderDay DATE,
-);
+CREATE TABLE Cars(id SERIAL PRIMARY KEY,carName VARCHAR(20),carAvailable BOOLEAN,lastOrderDay DATE);
 
 
-create table Orders(
+CREATE TABLE Orders(
 	id SERIAL PRIMARY KEY,
 	carID INTEGER,
-	carName varchar(20),
+	carName VARCHAR(20),
 	startDate DATE,
 	endDate DATE,
 	price INTEGER,
 	FOREIGN KEY (carID) REFERENCES Cars(id)
 );
 
+CREATE TABLE Orders(id SERIAL PRIMARY KEY,carId INTEGER,carName VARCHAR(20),startDate DATE,endDate Date,price INTEGER,FOREIGN KEY (carId) REFERENCES Cars(id));
+
+ALTER TABLE Cars ALTER COLUMN id SERIAL PRIMARY KEY,
