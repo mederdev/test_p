@@ -1,5 +1,5 @@
 const days = [4, 5, 8, 12];
-const weekdays = [6, 7, 13, 14, 20, 21, 27, 28]
+const basePrice = 1000;
 
 export function getPrice(start, end): string | number {
 	const startDate = new Date(start);
@@ -8,12 +8,12 @@ export function getPrice(start, end): string | number {
 		return 'Booking on weekdays is not available';
 	}
 	const timeDiff = Math.abs(startDate.getTime() - endDate.getTime());
-	let percentPrice = 0;
+	let percentPrice = (basePrice / 100) * 5;
 	let res = 0;
 	let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
 	for (let i = 0; i < days.length; i++) {
 		if (days[i] < diffDays) {
-			res = res + days[i] * (1000 - percentPrice);
+			res = res + days[i] * (basePrice - percentPrice);
 			diffDays = diffDays - days[i];
 			percentPrice = percentPrice + 50;
 		} else {

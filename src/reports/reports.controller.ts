@@ -15,4 +15,10 @@ export class ReportsController {
 		const result = await db.query(`SELECT AVG(Price) AS Average_Price FROM orders Where id='${carId}'`);
 		return "CarId=" + carId + "\nAverage Price per Month=" + result.rows[0].average_price;
 	}
+
+	@Get('cars')
+	async getCars() {
+		const result = await db.query(`SELECT * FROM cars`);
+		return result.rows;
+	}
 };
