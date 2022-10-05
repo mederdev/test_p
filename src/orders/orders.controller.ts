@@ -9,13 +9,13 @@ import { OrdersService } from './orders.service';
 export class OrdersController {
 	constructor(private orderService: OrdersService) { };
 
-	@Post()
+	@Post('newSession')
 	@ApiResponse({ status: 201, description: 'The order has been successfully created.' })
 	async newCarOrder(@Body() dto: OrderDto) {
 		return this.orderService.newSession(dto);
 	}
 
-	@Get()
+	@Get('allSession')
 	async getOrders() {
 		return this.orderService.getOrders();
 	}

@@ -8,13 +8,13 @@ import { CarDto } from './dto/carDto';
 export class CarController {
 	constructor(private carService: CarService) { }
 
-	@Post()
+	@Post('newCar')
 	@ApiResponse({ status: 201, description: 'The car has been successfully created.' })
 	async setCar(@Body() carDto: CarDto) {
 		return this.carService.setCar(carDto);
 	}
 
-	@Get()
+	@Get('allCars')
 	async getCars() {
 		return this.carService.getCars();
 	}
