@@ -18,7 +18,8 @@ async function setCarAvailable(id: number) {
 }
 
 async function getAvailableCars(id: number) {
-	return db.query(`SELECT (carname,caravailable) from cars where id=${id}`);
+	const result = await db.query(`SELECT (carname,caravailable) from cars where id=${id}`);
+	return result.rows[0].row.slice(1, -1).split(',')[1];
 }
 
 export { getCarsFromDB, setCarToDB, getCountCars, setCarAvailable, getAvailableCars };

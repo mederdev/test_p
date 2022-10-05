@@ -5,7 +5,7 @@ async function carAvailables() {
 	const lengtDB = result.rows[0].count;
 	if (lengtDB == 0) return;
 	for (let i = 0; i <= lengtDB; i++) {
-		const res = await setCarAvailable(i);
+		await setCarAvailable(i);
 	}
 	return;
 }

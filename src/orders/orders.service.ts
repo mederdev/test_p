@@ -11,13 +11,11 @@ export class OrdersService {
 
 	async newSession(dto: OrderDto) {
 		const result = await getAvailableCars(dto.id);
-		const carInfo = result.rows[0].row.slice(1, -1).split(',');
-		await carAvailables();
-		if (carInfo[1] == 't') {
+		if (result == 't') {
 			const resMessage = getPrice(dto.startDate, dto.endDate);
 			if (typeof resMessage === 'string') return resMessage;
-			await newSessionCar(dto.id, carInfo[0], dto.startDate, dto.endDate, resMessage);
-			return 'Result\nCar=' + carInfo[0] + ',Price=' + resMessage;
+			await newSessionCar(dto.id, result, dto.startDate, dto.endDate, resMessage);
+			return 'Result\nCar=' + result + ',Price=' + resMessage;
 		}
 		else {
 			return 'Car is not available';
