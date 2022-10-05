@@ -8,8 +8,4 @@ async function getMonthReport() {
 	return db.query(`SELECT AVG(Price) AS Average_Price FROM orders`);
 }
 
-async function getCarsList() {
-	return db.query(`SELECT * FROM cars`);
-}
-
-export { getCarReport, getMonthReport, getCarsList };
+export { getCarReport, getMonthReport };

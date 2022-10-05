@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { getMonthReport, getCarReport, getCarsList } from './reports.repository';
+import { getMonthReport, getCarReport } from './reports.repository';
 
 
 @Injectable()
@@ -14,8 +14,4 @@ export class ReportsService {
 		return "CarId=" + carId + "\nAverage Price per Month=" + result.rows[0].average_price;
 	}
 
-	async getCars() {
-		const result = await getCarsList();
-		return result.rows;
-	}
 }

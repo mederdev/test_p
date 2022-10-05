@@ -18,8 +18,4 @@ export class ReportsController {
 		return this.reportsService.getByCar(carId);
 	}
 
-	@Get('cars')
-	async getCars() {
-		return this.reportsService.getCars();
-	}
 };
